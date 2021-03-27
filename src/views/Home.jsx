@@ -20,9 +20,12 @@ const Home = () => {
   const [putOnSale, setPutOnSale] = useState(true);
   const [instantSalePrice, setInstantSalePrice] = useState(false);
   const [unlockOnce, setUnlockOnce] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
 
   const handleUpload = (event) => {
-    console.log(event.target);
+    if (event.target.files && event.target.files[0]) {
+      setPreviewImage(URL.createObjectURL(event.target.files[0]));
+    }
   }
 
   return (
@@ -75,7 +78,7 @@ const Home = () => {
               <div className="file-uploader">
                 <div className="normal">
                   <label htmlFor="file">Choose File</label>
-                  <input type="file" id="file" onChange={() => handleUpload()} />
+                  <input type="file" id="file" onChange={handleUpload} />
                   <p>PNG, GIF, WEBP, MP4 or<br /> MP3. Max 30mb</p>
                 </div>
                 <div className="active"></div>
@@ -158,10 +161,15 @@ const Home = () => {
           <div className="right">
             <p className="title">Preview</p>
             <div className="preview">
-              <div className="normal">
-                <img src={ImageAvatar} alt="" />
-              </div>
-              <div className="active"></div>
+              {
+                previewImage
+                  ? <div className="active">
+                    <img src={previewImage} alt="" />
+                  </div>
+                  : <div className="normal">
+                    <img src={ImageAvatar} alt="" />
+                  </div>
+              }
             </div>
           </div>
         </div>
