@@ -1,0 +1,25 @@
+.togglebox-container {
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(40, 23, 130);
+  box-sizing: border-box;
+  padding: 4px;
+  width: 66px;
+  height: 33px;
+
+
+  &.active {
+    justify-content: flex-end;
+    background-color: rgb(3, 235, 250);
+  }
+
+  .dot {
+    border-radius: 50%;
+    background-color: rgb(27, 14, 96);
+    width: 27px;
+    height: 26px;
+  }
+}
