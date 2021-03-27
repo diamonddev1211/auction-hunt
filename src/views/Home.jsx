@@ -21,11 +21,21 @@ const Home = () => {
   const [instantSalePrice, setInstantSalePrice] = useState(false);
   const [unlockOnce, setUnlockOnce] = useState(false);
   const [previewImage, setPreviewImage] = useState(null);
+  const [name, setName] = useState('');
+  const [unlockableContent, setUnlockableContent] = useState('');
 
   const handleUpload = (event) => {
     if (event.target.files && event.target.files[0]) {
       setPreviewImage(URL.createObjectURL(event.target.files[0]));
     }
+  }
+
+  const handleChangeName = (event) => {
+    setName(event.target.value);
+  }
+
+  const handleChangeUnlockableContent = (event) => {
+    setUnlockableContent(event.target.value);
   }
 
   return (
@@ -106,13 +116,22 @@ const Home = () => {
               </div>
             }
             <div className="unlock-once-purchased">
-              <div className="left">
-                <p className="title">Unlock once purchased</p>
-                <p className="description">Content will be unlocked after successful<br /> transaction</p>
+              <div>
+                <div className="left">
+                  <p className="title">Unlock once purchased</p>
+                  <p className="description">Content will be unlocked after successful<br /> transaction</p>
+                </div>
+                <div className="right">
+                  <ToggleBox value={unlockOnce} onChange={() => setUnlockOnce(!unlockOnce)} />
+                </div>
               </div>
-              <div className="right">
-                <ToggleBox value={unlockOnce} onChange={() => setUnlockOnce(!unlockOnce)} />
-              </div>
+              {
+                unlockOnce &&
+                <div className="unlockable-content">
+                  <textarea value={unlockableContent} onChange={handleChangeUnlockableContent}></textarea>
+                  <p>Tip: Markdown syntax is supported</p>
+                </div>
+              }
             </div>
             <div className="choose-collection">
               <p className="title">Choose collection</p>
@@ -136,7 +155,7 @@ const Home = () => {
             </div>
             <div className="name">
               <p className="title">Name</p>
-              <input type="text" placeholder="eg. Reedimable T-shirt with logo" />
+              <input type="text" onInput={handleChangeName} value={name} placeholder="eg. Reedimable T-shirt with logo" />
             </div>
             <div className="description">
               <p className="title">Description <span>(optional)</span></p>
@@ -170,7 +189,19 @@ const Home = () => {
                     <img src={ImageAvatar} alt="" />
                   </div>
               }
+              <p className="name">{name}</p>
+              {
+                (name || previewImage) &&
+                <p class="detail">
+                  <span><b>Auction</b> 1 of 1</span><br />
+                  <span class="bid">Place a bid</span>
+                </p>
+              }
             </div>
+            {
+              unlockableContent &&
+              <div className="unlockable-content">{unlockableContent}</div>
+            }
           </div>
         </div>
       </div>
