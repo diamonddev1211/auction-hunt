@@ -233,7 +233,6 @@
         .put-on-sale {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 53px;
           
           .left {
             .title {
@@ -259,7 +258,6 @@
         .instant-sale-price {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 53px;
           
           .left {
             .title {
@@ -285,7 +283,6 @@
         .unlock-once-purchased {
           display: flex;
           justify-content: space-between;
-          margin-bottom: 53px;
           
           .left {
             .title {
@@ -541,6 +538,7 @@
   .footer {
     display: flex;
     flex-direction: column;
+    background: #211272;
 
     .top {
       padding: 21px 66px 11px;
