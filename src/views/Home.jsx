@@ -178,30 +178,32 @@ const Home = () => {
             <button className="connect-wallet">Connect Wallet</button>
           </div>
           <div className="right">
-            <p className="title">Preview</p>
-            <div className="preview">
+            <div>
+              <p className="title">Preview</p>
+              <div className="preview">
+                {
+                  previewImage
+                    ? <div className="active">
+                      <img src={previewImage} alt="" />
+                    </div>
+                    : <div className="normal">
+                      <img src={ImageAvatar} alt="" />
+                    </div>
+                }
+                <p className="name">{name}</p>
+                {
+                  (name || previewImage) &&
+                  <p class="detail">
+                    <span><b>Auction</b> 1 of 1</span><br />
+                    <span class="bid">Place a bid</span>
+                  </p>
+                }
+              </div>
               {
-                previewImage
-                  ? <div className="active">
-                    <img src={previewImage} alt="" />
-                  </div>
-                  : <div className="normal">
-                    <img src={ImageAvatar} alt="" />
-                  </div>
-              }
-              <p className="name">{name}</p>
-              {
-                (name || previewImage) &&
-                <p class="detail">
-                  <span><b>Auction</b> 1 of 1</span><br />
-                  <span class="bid">Place a bid</span>
-                </p>
+                unlockableContent &&
+                <div className="unlockable-content">{unlockableContent}</div>
               }
             </div>
-            {
-              unlockableContent &&
-              <div className="unlockable-content">{unlockableContent}</div>
-            }
           </div>
         </div>
       </div>
