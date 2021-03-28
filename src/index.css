@@ -9,6 +9,7 @@ body {
 
 body * {
   font-family: 'Poppins';
+  transition: 0.2s;
 }
 
 p {

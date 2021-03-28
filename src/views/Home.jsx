@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FadeIn from 'react-fade-in';
 import ToggleBox from '../components/ToggleBox';
 
 import '../assets/scss/pages/Home.scss';
@@ -41,7 +42,9 @@ const Home = () => {
   return (
     <div className="home">
       <div className="header">
-        <button className="hamburger">O</button>
+        <button className="hamburger">
+          <svg viewBox="0 0 18 8" fill="none" width="13.200000000000001" height="13.200000000000001" xlmns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447716 2 1 2H17C17.5523 2 18 1.55228 18 1C18 0.447715 17.5523 0 17 0H1ZM4 6C3.44772 6 3 6.44772 3 7C3 7.55228 3.44772 8 4 8H14C14.5523 8 15 7.55228 15 7C15 6.44772 14.5523 6 14 6H4Z" fill="currentColor"></path></svg>
+        </button>
         <div>
           <img src={Logo} alt="logo" className="logo" />
           <div className="search">
@@ -86,12 +89,20 @@ const Home = () => {
             <div className="upload-file">
               <p className="title">Upload file</p>
               <div className="file-uploader">
-                <div className="normal">
-                  <label htmlFor="file">Choose File</label>
-                  <input type="file" id="file" onChange={handleUpload} />
-                  <p>PNG, GIF, WEBP, MP4 or<br /> MP3. Max 30mb</p>
-                </div>
-                <div className="active"></div>
+                {
+                  previewImage ?
+                    <div className="active">
+                      <button onClick={() => setPreviewImage(null)}>
+                        <svg viewBox="0 0 16 16" fill="none" width="13.200000000000001" height="13.200000000000001" xlmns="http://www.w3.org/2000/svg"><path d="M4 12L12 4" stroke="currentColor" stroke-width="2"></path><path d="M12 12L4 4" stroke="currentColor" stroke-width="2"></path></svg>
+                      </button>
+                      <img src={previewImage} />
+                    </div>
+                    : <div className="normal">
+                      <label htmlFor="file">Choose File</label>
+                      <input type="file" id="file" onChange={handleUpload} />
+                      <p>PNG, GIF, WEBP, MP4 or<br /> MP3. Max 30mb</p>
+                    </div>
+                }
               </div>
             </div>
             <div className="put-on-sale">

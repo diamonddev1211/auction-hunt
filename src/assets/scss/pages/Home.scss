@@ -1,4 +1,10 @@
 .home {
+
+  button:hover, label:hover {
+    opacity: 0.8;
+    transition: 0.2s;
+  }
+
   .header {
     display: flex;
     align-items: center;
@@ -14,6 +20,15 @@
       width: 30px;
       height: 30px;
       display: none;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #FFF;
+      background: none;
+
+      svg {
+        filter: invert(1);
+      }
     }
     
     & > div {
@@ -189,9 +204,8 @@
           }
 
           .file-uploader {
-            border: 1px dashed rgb(255, 255, 255);
+            border: 1px dashed rgba(255, 255, 255, 0.345);
             border-radius: 8px;
-            opacity: 0.349;
             padding: 50px;
 
             .normal {
@@ -226,6 +240,30 @@
                 text-align: center;
               }
 
+            }
+
+            .active {
+              img {
+                width: 100%;
+              }
+
+              button {
+                float: right;
+                padding: 0;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 10px;
+                border: 1px solid #FFF;
+                background: none;
+
+                svg {
+                  filter: invert(1);
+                }
+              }
             }
           }
         }
@@ -481,6 +519,7 @@
               box-sizing: border-box;
               border: none;
               padding: 0 13px;
+              padding-right: 35px;
               font-size: 14px;
             }
 
@@ -577,6 +616,7 @@
               margin-top: 30px;
               margin-bottom: 10px;
               color: #FFF;
+              overflow-wrap: anywhere;
             }
 
             .detail {
@@ -780,7 +820,7 @@
       }
 
       .hamburger {
-        display: block;
+        display: flex;
       }
     }
 

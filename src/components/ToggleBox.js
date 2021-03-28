@@ -8,7 +8,7 @@ const ToggleBox = ({ value = true, onChange }) => {
     setToggle(!toggle);
   }
   return (
-    <div className={`togglebox-container ${value && `active`}`} onClick={handleToggle}>
+    <div className={`togglebox-container ${value && `active`}`} onClick={handleToggle} onselectionstart="return false">
       <div className="dot" />
     </div>
   )
